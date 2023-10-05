@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<style>
+     * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: sans-serif;
+     }
+
+     section {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          padding: 100px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #fff;
+     }
+
+     header {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 20px 100px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+     }
+
+     header .logo {
+          position: relative;
+          max-width: 80px;
+     }
+
+     header ul {
+          position: relative;
+          display: flex;
+     }
+
+     header ul li {
+          list-style: none;
+     }
+
+     header ul li a {
+          display: inline-block;
+          color: #333;
+          font-weight: 400;
+          margin-left: 40px;
+          text-decoration: none;
+     }
+     .content{
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+     }
+     .content .textbox{
+          position: relative;
+          max-width: 600px;
+     }
+     .content .textbox h2{
+          color: #333;
+          font-size: 4em;
+          line-height: 1.4em;
+          font-weight: 500;
+
+     }
+     .content .textbox h2 span{
+          color: #017143;
+          font-size: 1.2em;
+          font-weight: 900;
+     }
+     .content .textbox p{
+          color: #333;
+     }
+     .content .textbox a{
+          display: inline-block;
+          margin-top: 20px;
+          padding: 8px 20px;
+          background: #017143;
+          color: #fff;
+          border-radius: 40px;
+          font-weight: 500;
+          letter-spacing: 1px;
+          text-decoration: none;
+     }
+     .content .imgbox{
+          width: 600px;
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 50px;
+          margin-top: 50px;
+     }
+     .content .imgbox img{
+          max-width: 340px;
+     }
+     .thumb{
+          position: absolute;
+          left: 50%;
+          bottom: 20px;
+          transform: translateX(-50%);
+          display: flex;
+     }
+     .thumb li{
+          list-style: none;
+          display: inline-block;
+          margin: 0 20px;
+          cursor: pointer;
+          transition: 0.5s;
+     }
+     .thumb li:hover{
+          transform: translateY(-20px);
+     }
+     .thumb li img{
+          max-width: 60px;
+     }
+     .sci{
+          position: absolute;
+          top: 50%;
+          right: 30px;
+          transform: translateY(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+     }
+     .sci li{
+          list-style: none;
+          margin: 15px;
+     }
+     .sci li a{
+          display: inline-block;
+          margin: 5px 0;
+          transform: scale(0.6);
+     filter: invert(1);
+     }
+     .circle{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #017143;
+          clip-path: circle(600px at  right 800px);
+     }
+
+
+     
+     @media (max-width:991px) {
+          header{
+               padding: 20px;
+          }
+          header .logo{
+               max-width: 60px;
+          }
+          header ul{
+               display: none;
+          }
+          .toggle{
+               position: relative;
+               width: 30px;
+               height: 100px;
+               cursor: pointer;
+               background: url(menu.png);
+               background-size: 30px;
+               background-position: center;
+               background-repeat: no-repeat;
+               filter:invert(1);
+               z-index: 11;
+          }
+          .toggle.active{
+               position: fixed;
+               right: 20px;
+               background: url(close.png);
+               background-size: 25px;
+               background-position: center;
+               background-repeat: no-repeat;
+          }
+          header ul.navigation.active{
+               position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               flex-direction: column;
+               background: #fff;
+               z-index: 10;  
+          }
+          header ul li a{
+               font-size: 1.5em;
+               margin: 5px 0;
+          }
+          section{
+               padding: 20px;
+          }
+          .content{
+               flex-direction: column;
+               margin-top: 100px;
+          }
+          .content .textbox h2{
+               font-size: 2.5em;
+               margin-bottom: 15px;
+          }
+          .content .textbox {
+               max-width: 100%;
+          }
+          .content .imgbox{
+               max-width: 100%;
+               justify-content: center;
+          }
+          .content .imgbox img{
+               max-width: 300px;
+          }
+          .thumb li img{
+               max-width: 40px;
+          }
+          .circle{
+               clip-path: circle(400px at center bottom);
+          }
+          .sci{
+               background: #017143;
+               right: 0;
+               width: 50px;
+               border-top-left-radius: 5px;
+               border-bottom-left-radius: 5px;
+          }
+     }
+</style>
+
+<body>
+     <section>
+          <div class="circle"></div>
+          <header>
+               <a href="#" class="logo"><img src="logo.png" alt="" class="logo"></a>
+               <div class="toggle" onclick="toggleMenu();"></div>
+               <ul class="navigation">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">What's</a></li>
+                    <li><a href="#">Conteact</a></li>
+               </ul>
+          </header>
+          <div class="content">
+               <div class="textbox">
+                    <h2>It's not just Coffee<br>It's <span>Starbucks</span></h2>
+                    <p>Our Starbucks India interns collaborate directly with leaders, have access to career-elevating prospects and enjoy curated local experiences. This immersive internship includes opportunities at our Starbucks Support Center with varying openings and needs across multiple departments.</p>
+                    <a href="">lorem more</a>
+               </div>
+               <div class="imgbox">
+                    <img src="img1.png" class="starbucks">
+               </div>
+
+          </div>
+          <ul class="thumb">
+               <li><img src="thumb1.png" onclick="imgslider('img1.png');changeCirclecolor('#017143')"></li>
+               <li><img src="thumb2.png" onclick="imgslider('img2.png');changeCirclecolor('#eb7495')"></li>
+               <li><img src="thumb3.png" onclick="imgslider('img3.png');changeCirclecolor('#d752b1')"></li>
+
+          </ul>
+          <ul class="sci">
+               <li><a href="https://www.facebook.com/Starbucks/"></a><img src="facebook.png"></li>
+               <li><a href="https://twitter.com/starbucksindia?lang=en"></a><img src="twitter.png" ></li>
+               <li><a href="https://www.instagram.com/starbucks/?__coig_restricted=1"></a><img src="instagram.png"></li>
+
+          </ul>
+
+
+     </section>
+
+     <script type="text/javascript">
+          function imgslider(anything){
+               document.querySelector('.starbucks').src = anything;
+          }
+
+
+          function changeCirclecolor(color){
+               const circle = document.querySelector('.circle');
+               circle.style.background =color;
+          }
+
+          function toggleMenu(){
+               var menutoggle = document.querySelector('.toggle');
+               var navigation = document.querySelector('.navigation')
+               menutoggle.classList.toggle('active')
+               navigation.classList.toggle('active')
+
+          }
+     </script>
+
+</body>
+
+</html>
